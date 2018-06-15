@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Movie App</title>
+    <link rel="shortcut icon" href="img/alt.png" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min .css" rel="stylesheet" />
+    <link href="bootstrap/css.css" rel="stylesheet" />
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body ng-app="movieApp" ng-cloak>
+    <nav class="navbar navbar-default" ng-controller="NavController">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a id="logoStyle" class="navbar-brand" ng-click="resetInput()" href="#/home"><img style="width: 50px; height: 50px" ng-src="img/log.png" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active" ng-click="resetInput()"><a href="#/home">Movies <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#/tv-shows">TV Shows</a></li>
+                    <li><a href="#/people">People</a></li>
+                </ul>
+                <search do-search="handleSearch(input)"></search>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+    <div ng-view></div>
+    <!--libs-->
+    <script src="bower_components/jquery-2.2.3.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <!--app-->
+    <script src="scripts/app.js"></script>
+    <!--controllers-->
+    <script src="scripts/service/DataService.js"></script>
+    <script src="scripts/controllers/SearchController.js"></script>
+    <script src="scripts/controllers/DetailsController.js"></script>
+    <script src="scripts/controllers/HomeController.js"></script>
+    <script src="scripts/controllers/NavController.js"></script>
+    <script src="scripts/controllers/LoginController.js"></script>
+    <script src="scripts/controllers/RegistrationController.js"></script>
+    <script src="scripts/controllers/ActorDetailsController.js"></script>
+    <script src="scripts/directives/search.js"></script>
+    <script src="scripts/controllers/test.js"></script>
+    <script src="scripts/directives/imgDims.js"></script>
+</body>
+</html>

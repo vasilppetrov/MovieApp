@@ -1,0 +1,11 @@
+﻿<form class="navbar-form navbar-left ng-pristine ng-valid" role="search">
+    <div class="form-group">
+        <input id="inputValue" type="text" class="form-control ng-pristine ng-valid ng-touched" placeholder="Search " ng-model="searchText">
+    </div>
+    <select class="form-control" id="searchBy">
+        <option value="movie" ng-selected="true">Movie</option>
+        <option value="actor">Actor</option>
+    
+    </select>
+    <button ng-click="dirSearch(searchText)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+</form>

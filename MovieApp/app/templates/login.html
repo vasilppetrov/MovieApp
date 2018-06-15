@@ -1,0 +1,41 @@
+﻿
+<div ng-controller="LoginController">
+    <div class="row">
+        <div class=" col-md-offset-1 col-md-6">
+            <h1>Welcome</h1>
+            <p>This is a simple movie app.</p>            
+        </div>
+        <div class="col-md-4">     
+                <form class="form-horizontal" name="loginForm">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <div class="form-group">
+                            <label for="loginEmail" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input  type="text" class="form-control" id="loginEmail" placeholder="Email" ng-required="true" ng-model="loginUser.email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword" class="col-lg-2 control-label">Password</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Password"  ng-required="true" ng-model="loginUser.password">
+                            </div>
+                        </div>   
+                        <div class="form-group">                          
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <a id="registerLink" href="#/register">Don't have an account? Register here!</a>
+                            </div>
+                        </div>       
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-success" ng-click="login(loginUser,loginForm)" ng-disabled="!(loginForm.$valid)">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    </div>
+    
+</div>

@@ -1,0 +1,78 @@
+﻿<div ng-controller="ActorDetailsController" class="container">
+
+    <div class="row jumbotron cardsHome" style="padding: 0px">
+        <div id="coverActor" style="background-image:url({{backgroundUrl}})">
+            <div id="filterInner" class="row">
+                <div class="col-md-4 imgContainerHome ">
+                    <img id="imageActr" ng-src="{{actorPoster}}" class="img-responsive cardsHome" alt="Alternate Text"  />
+                </div>
+                <div>
+                    <div class="col-md-6">
+                        <div>
+                            <h2>{{actor.name}}</h2>
+                        </div>
+                        <div><span class="orangeColor">Born : </span>{{actor.birthday}}</div>
+                        <div><span class="orangeColor">Place of birth : </span> {{actor.place_of_birth}}</div>
+                        <div>
+                            <h4>Biography</h4>
+                            <hr class="style-four" />
+                            <div>
+                                {{(actor.biography | limitTo: 500) + (actor.biography.length > 200 ? '...' : '')}} <a id="modalToggle" data-toggle="modal" data-target="#bioModal">Read More</a>
+                            </div>                          
+                        </div>
+                        <br />
+                        <div><span>Known Credits : </span>{{credits.length}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="container">                
+                <div class="modal fade" id="bioModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body" style="color:black">
+                                <div><h3>Biography</h3></div>
+                                <hr class="hrStyle"/>
+                                {{actor.biography}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-4">
+            <div class="col-md-8" style="background-color:white; margin-left: 10px">
+                <h4>Acting</h4>
+                <div class="col-md-12" ng-repeat="credit in credits| orderBy: '-release_date'|filter:{media_type: 'movie'}| limitTo: limit">                   
+                    <div class="containerListCast">
+                        <div>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{credit.release_date ? credit.release_date: 'unknown'}}
+                        </div>
+                        <div>
+                            <i class="fa fa-film" aria-hidden="true"></i> <a href="#/movie-details/{{credit.id}}">{{credit.original_title ? credit.original_title : credit.original_name }}</a> 
+                        </div>
+                        <div>
+                            As {{credit.character}}
+                        </div> 
+                        <hr class="hrStyle" /> 
+                    </div>                
+                </div>
+                 <div id="showHideResult" ng-click="resetLimit()">Show all</div>
+            </div>
+            
+        </div>     
+        <div class="col-md-8">
+             <h4 style="padding-left: 30px;color:white" >Known For</h4>
+            <div class="col-md-3 " ng-repeat="credit in credits| orderBy: '-release_date'|filter:{media_type: 'movie'}| limitTo: 22" ng-if="credit.poster_path !== null">
+                <a href="#/movie-details/{{credit.id}}"><img class="imageCredits cardsHome img-responsive" ng-src="{{baseUrl}}{{credit.poster_path}}" alt="Alternate Text" /></a> 
+            </div> 
+        </div>
+               
+    </div>
+</div>

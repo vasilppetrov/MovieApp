@@ -1,0 +1,45 @@
+﻿<div class="container" ng-controller="HomeController">
+    <div class="row">
+        <div class="col-md-3" id="titleHome"><h3>Popular Movies <i class="fa fa-film" aria-hidden="true"></i></h3></div>
+    </div>
+   <div class="row">
+       <div class="container">
+           <div class="row" >
+               <div class="col-md-6" ng-repeat="url in allUrls">
+                   <div class="row panel-body cardsHome">
+                       <div class="col-md-4 imgContainerHome">
+                           <a href="#/movie-details/{{url.id}}"><img id="img-{{$index}}" class="img-responsive cardsHome" img-dim  style="margin:0 0 0 0" ng-src="{{url.poster}}" /></a>
+                       </div>
+                       <div class="col-md-8">
+                           <div class="row">
+                               <div class="col-md-9">
+                                   <div><a style="color: black" href="#/movie-details/{{url.id}}"><h4 class="titleOverflow">{{url.title | limitTo : 35}}</h4></a></div>
+                               </div>
+                               <div class="col-md-3">
+                                   <h4>{{url.rating | number: 1 }} <i class="fa fa-star-o" aria-hidden="true"></i></h4>
+                               </div>
+                           </div>
+                           <div class="row">
+                                <div class="col-md-6"><p><i class="fa fa-calendar" aria-hidden="true"></i> {{url.release_date}}</p></div>                               
+                               <div class="col-md-12">{{(url.plot | limitTo: 200) + (url.plot.length > 200 ? '...' : '')}}</div>
+                           </div>
+                       </div>                   
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="row">
+       <div class="container" id="totalPagesHome">
+           <p>
+               <span>Currently on page: </span>{{page}} of {{totalPages}} ({{totalResult}} results)
+           </p> 
+       </div>
+   </div>   
+    <ul class="pager">
+        <li ng-show="page > 1"><a href="" ng-click="pager.prev()">Previous</a></li>
+        <li><a href="" ng-click="pager.next()">Next</a></li>
+    </ul>  
+    <button ng-click="scroll()" id="scrBtn"><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></button>
+</div>
+

@@ -1,0 +1,47 @@
+﻿<div ng-controller="DetailsController" class="container">
+    <h2>{{movie.title}}</h2>
+    <div class="jumbotron">      
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-responsive" ng-src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" />
+            </div>
+            <div class="col-md-4">
+                <h4><strong>Rating: {{movie.vote_average }}</strong></h4>
+                <h4><strong>Released: {{movie.release_date}}</strong></h4>
+                <p><h4><strong>Genre:</strong></h4><strong ng-repeat="item in movie.genres">{{item.name}}{{$last ? '' : ', '}}</strong></p>
+                <p>
+                    <h4><strong>Plot</strong></h4>
+                    {{movie.overview}}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4><strong>Trailer</strong></h4>
+                <div>
+                    <iframe width="350" height="176" ng-src="{{trailer}}" frameborder="0" allowfullscreen controls></iframe>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div > 
+        <div class="row">
+            <div class="col-md-4">
+                <blockquote>
+                    <p><strong>Director:</strong></p>
+                    <small ng-repeat="item in movie.credits.crew | filter: 'Directing'">{{item.name}} </small>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote>
+                    <p><strong>Stars:</strong></p>
+                    <small ng-repeat="item in movie.credits.cast|limitTo:4"><a href="#/actor-details/{{item.id}}">{{item.name}}</a> </small>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote>
+                    <p><strong>Writer:</strong></p>
+                    <small ng-repeat="item in movie.credits.crew | filter : 'Writing' | limitTo : 4">{{item.name}} </small>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
